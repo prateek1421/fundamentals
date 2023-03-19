@@ -16,7 +16,7 @@ public class SortASentence {
 
 
     public static void main(String args[]) {
-        System.out.println(sortASentence("A B."));
+        System.out.println(sortASentence("my name is prateek."));
     }
     public static String sortASentence(String str) {
         if (Objects.isNull(str) || str.isEmpty()) {
@@ -30,14 +30,10 @@ public class SortASentence {
         for(int i=0;i<words.length;i++) {
             for(int j=0;j<words.length-i-1;j++) {
                 if(words[j].length() > words[j+1].length()) {
-                    String temp = words[j];
-                    words[j] = words[j+1];
-                    words[j+1] =  temp;
+                    swap(words,j,j+1);
                 } else if (words[j].length() == words[j+1].length()) {
                     if(words[j].compareTo(words[j+1]) > 0) {
-                        String temp = words[j];
-                        words[j] = words[j+1];
-                        words[j+1] =  temp;
+                        swap(words,j,j+1);
                     }
                 }
             }
@@ -49,5 +45,11 @@ public class SortASentence {
             else response = response + words[i]+" ";
         }
         return response;
+    }
+
+    private static void swap(String[] array,int first,int second) {
+        String temp = array[first];
+        array[first] = array[second];
+        array[second] =  temp;
     }
 }
